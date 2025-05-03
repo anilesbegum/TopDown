@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj434wfjcoyl3"]
+
+[ext_resource type="Script" uid="uid://bs5w63vjqhwvc" path="res://script/bullet.gd" id="1_mkf8s"]
+[ext_resource type="AudioStream" uid="uid://cf10u0p6i5lot" path="res://Sound/shoot-1-81135.mp3" id="2_y25gk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h1aey"]
+radius = 3.0
+
+[node name="Bullet" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_mkf8s")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-0.461538, 0.923077)
+scale = Vector2(0.0769231, 0.0769231)
+polygon = PackedVector2Array(-10, 32, -17, 29, -21, 26, -23, 23, -27, 19, -28, 16, -30, 12, -32, 7, -33, 2, -33, -2, -33, -7, -32, -11, -28, -15, -27, -20, -25, -23, -22, -24, -18, -26, -14, -28, -11, -31, -8, -32, -3, -33, 3, -33, 7, -32, 13, -29, 17, -27, 20, -24, 26, -17, 29, -13, 30, -9, 31, -3, 32, 2, 32, 6, 31, 12, 29, 16, 27, 20, 24, 23, 21, 26, 17, 28, 13, 30, 9, 32, 4, 33, -4, 35, -9, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 1)
+shape = SubResource("CircleShape2D_h1aey")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_y25gk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

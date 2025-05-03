@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbprlwj0li5sp"]
+
+[sub_resource type="Curve" id="Curve_3oo6d"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00901628), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="explosion" type="CPUParticles2D"]
+emitting = false
+amount = 50
+one_shot = true
+speed_scale = 1.42
+explosiveness = 1.0
+spread = 180.0
+initial_velocity_min = 385.44
+initial_velocity_max = 795.7
+scale_amount_min = 0.0
+scale_amount_max = 13.0
+scale_amount_curve = SubResource("Curve_3oo6d")
+color = Color(0, 0, 0, 1)

@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxa4sd1qxf778"]
+
+[ext_resource type="Script" uid="uid://c6ct27ibfrl77" path="res://script/UI.gd" id="1_srplv"]
+[ext_resource type="FontFile" uid="uid://c5v1n2pxpg4ko" path="res://Font/Lana Turner.ttf" id="2_ro3t7"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_srplv")
+
+[node name="Time" type="Label" parent="."]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_ro3t7")
+theme_override_font_sizes/font_size = 30
+text = "Time : 0"
+
+[node name="Kill" type="Label" parent="."]
+layout_mode = 0
+offset_top = 35.0
+offset_right = 100.0
+offset_bottom = 68.0
+theme_override_fonts/font = ExtResource("2_ro3t7")
+theme_override_font_sizes/font_size = 30
+text = "KILL : 0"
+
+[node name="Kill2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 594.0
+offset_right = 824.0
+offset_bottom = 627.0
+theme_override_fonts/font = ExtResource("2_ro3t7")
+theme_override_font_sizes/font_size = 30
+text = "Kill All Zombi and Count Your score "
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

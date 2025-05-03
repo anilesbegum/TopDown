@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://66ha1in8ixm7"]
+
+[ext_resource type="Script" uid="uid://dgpm0ix85dw1g" path="res://script/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://db27l5hnq6dej" path="res://Assets/shooter.png" id="2_g2els"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 35.1283
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_3vyb7")
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(5.54323e-06, -0.125)
+scale = Vector2(1, 1.8125)
+color = Color(0.76496, 0.202174, 0.433301, 1)
+polygon = PackedVector2Array(57, -6, 176, 0.62069, 56, 10)
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2(-31, 7)
+color = Color(0.381163, 0.3864, 1, 1)
+polygon = PackedVector2Array(0, 46, 0, -56, 102, -21, 102, 15)
+uv = PackedVector2Array(105.334, 19.3333, 102.667, 16.6667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -5)
+shape = SubResource("CircleShape2D_g2els")
+
+[node name="Shooter" type="Sprite2D" parent="."]
+position = Vector2(12, -1)
+rotation = 1.56069
+texture = ExtResource("2_g2els")
+
+[node name="ShootyPart" type="Node2D" parent="."]
+position = Vector2(63, 0)

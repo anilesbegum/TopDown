@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://x1mfcpc5opf3"]
+
+[ext_resource type="PackedScene" uid="uid://66ha1in8ixm7" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bdarsqd8khs6x" path="res://script/game.gd" id="1_yqjtg"]
+[ext_resource type="AudioStream" uid="uid://b0525d6knm025" path="res://Sound/epic-game-music-by-kris-klavenes-3-mins-49771.mp3" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://cxa4sd1qxf778" path="res://scenes/UI.tscn" id="4_lbhrr"]
+
+[sub_resource type="Environment" id="Environment_yqjtg"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.28
+glow_hdr_threshold = 0.08
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uwrxv"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lnu2h"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lbhrr"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_yqjtg")
+
+[node name="Timer2" parent="." instance=ExtResource("4_lbhrr")]
+offset_left = 27.0
+offset_top = 24.0
+offset_right = 27.0
+offset_bottom = 24.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yqjtg")
+
+[node name="Player" parent="." instance=ExtResource("1_uwrxv")]
+position = Vector2(530, 333)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Top" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_uwrxv")
+
+[node name="Left" type="CollisionShape2D" parent="Walls"]
+shape = SubResource("WorldBoundaryShape2D_yqjtg")
+
+[node name="Right" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1151, 0)
+rotation = -1.57558
+shape = SubResource("WorldBoundaryShape2D_lnu2h")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 648)
+shape = SubResource("WorldBoundaryShape2D_lbhrr")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer3" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lnu2h")
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer3" to="." method="_on_timer_3_timeout"]

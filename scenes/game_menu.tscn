@@ -1,0 +1,130 @@
+[gd_scene load_steps=7 format=3 uid="uid://ck1rivy7k0w0o"]
+
+[ext_resource type="FontFile" uid="uid://c5v1n2pxpg4ko" path="res://Font/Lana Turner.ttf" id="1_qdaa4"]
+[ext_resource type="Script" uid="uid://bdk60vr12rivf" path="res://scenes/game_menu.gd" id="1_vrsc2"]
+[ext_resource type="Texture2D" uid="uid://db27l5hnq6dej" path="res://Assets/shooter.png" id="3_mw6r2"]
+[ext_resource type="Texture2D" uid="uid://bpa5fwylps2ux" path="res://Assets/zombie.png" id="4_ldg7d"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qdaa4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qdaa4"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_offset = Vector2(0, 3.41)
+
+[node name="Game_Menu" type="Control"]
+material = SubResource("CanvasItemMaterial_qdaa4")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vrsc2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129117, 0.196255, 0.235949, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 401.0
+offset_top = 338.0
+offset_right = -400.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.162514, 0.241169, 0.287696, 1)
+
+[node name="Start Game" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = 28.0
+offset_right = 165.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qdaa4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_qdaa4")
+text = "Start"
+
+[node name="quit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = 116.0
+offset_right = 165.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_qdaa4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_qdaa4")
+text = "quit
+"
+
+[node name="Shooter" type="Sprite2D" parent="."]
+position = Vector2(247, 418)
+rotation = 1.11347
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_mw6r2")
+
+[node name="Zombie" type="Sprite2D" parent="."]
+position = Vector2(896, 194)
+rotation = -2.19582
+scale = Vector2(1.42188, 1.42188)
+texture = ExtResource("4_ldg7d")
+
+[node name="Zombie2" type="Sprite2D" parent="."]
+position = Vector2(930, 505)
+rotation = -1.89391
+scale = Vector2(1.42188, 1.42188)
+texture = ExtResource("4_ldg7d")
+
+[node name="Zombie3" type="Sprite2D" parent="."]
+position = Vector2(471, 121)
+rotation = -2.37723
+scale = Vector2(1.42188, 1.42188)
+texture = ExtResource("4_ldg7d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -376.5
+offset_top = -68.0
+offset_right = 376.5
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_qdaa4")
+theme_override_font_sizes/font_size = 60
+text = "Play Zombi counter stake"
+
+[connection signal="pressed" from="Start Game" to="." method="_on_start_game_pressed"]
